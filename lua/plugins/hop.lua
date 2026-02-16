@@ -89,6 +89,13 @@ return {
         },
 
         {
+            "<leader><leader>",
+            function()
+                require("hop").hint_anywhere()
+            end,
+            desc = "Hop: jump anywhere",
+        },
+        {
             "<leader>jj",
             function()
                 require("hop").hint_anywhere({
