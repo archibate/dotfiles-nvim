@@ -18,6 +18,7 @@ return {
                     current_line_only = true,
                 })
             end,
+            mode = { "n", "x" },
             remap = true,
             desc = "Hop: char1 after cursor",
         },
@@ -34,6 +35,7 @@ return {
                     current_line_only = true,
                 })
             end,
+            mode = { "n", "x" },
             remap = true,
             desc = "Hop: char1 before cursor",
         },
@@ -51,6 +53,7 @@ return {
                     hint_offset = -1,
                 })
             end,
+            mode = { "n", "x" },
             remap = true,
             desc = "Hop: char1 till after cursor",
         },
@@ -68,6 +71,7 @@ return {
                     hint_offset = 1,
                 })
             end,
+            mode = { "n", "x" },
             remap = true,
             desc = "Hop: char1 till before cursor",
         },
@@ -77,15 +81,27 @@ return {
             function()
                 require("hop").hint_lines()
             end,
+            mode = { "n", "x" },
             desc = "Hop: jump to any line",
         },
 
         {
-            "<leader>s",
+            "s",
             function()
                 require("hop").hint_char2()
             end,
-            desc = "Hop: char2 bidirectional",
+            mode = { "n", "x" },
+            remap = true,
+            desc = "Hop: jump by two char",
+        },
+
+        {
+            "cs",
+            "s",
+            mode = { "n", "x" },
+            noremap = true,
+            silent = true,
+            desc = "Modify char under cursor",
         },
 
         {
@@ -93,6 +109,7 @@ return {
             function()
                 require("hop").hint_anywhere()
             end,
+            mode = { "n", "x" },
             desc = "Hop: jump anywhere",
         },
         {
@@ -102,6 +119,7 @@ return {
                     current_line_only = true,
                 })
             end,
+            mode = { "n", "x" },
             desc = "Hop: anywhere in current line",
         },
     },

@@ -80,3 +80,10 @@ end, { desc = "Smart close window/buffer/quit with save" })
 
 -- Map gq to original q (macro record)
 vim.keymap.set("n", "gq", "q", { noremap = true, silent = true, desc = "Start macro recording" })
+
+-- Buffer navigation
+vim.keymap.set("n", "[b", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "]b", "<cmd>bnext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "[B", "<cmd>bfirst<CR>", { desc = "First buffer" })
+vim.keymap.set("n", "]B", "<cmd>blast<CR>", { desc = "Last buffer" })
+vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Delete buffer" })
