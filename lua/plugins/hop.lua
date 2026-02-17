@@ -86,22 +86,12 @@ return {
         },
 
         {
-            "s",
+            "<leader>s",
             function()
                 require("hop").hint_char2()
             end,
             mode = { "n", "x" },
-            remap = true,
             desc = "Hop: jump by two char",
-        },
-
-        {
-            "cs",
-            "s",
-            mode = { "n", "x" },
-            noremap = true,
-            silent = true,
-            desc = "Modify char under cursor",
         },
 
         {

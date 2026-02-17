@@ -23,11 +23,13 @@ vim.keymap.set(
 )
 
 -- Better indenting
-vim.keymap.set("v", "<", function()
+vim.keymap.set("v", "<leader><", function()
     vim.cmd("normal! " .. vim.v.count1 .. "<gv")
+    vim.fn["repeat#set"]("<leader><", vim.v.count)
 end, { noremap = true, silent = true, desc = "Indent left" })
-vim.keymap.set("v", ">", function()
+vim.keymap.set("v", "<leader>>", function()
     vim.cmd("normal! " .. vim.v.count1 .. ">gv")
+    vim.fn["repeat#set"]("<leader>>", vim.v.count)
 end, { noremap = true, silent = true, desc = "Indent right" })
 
 -- Move selected line/block
