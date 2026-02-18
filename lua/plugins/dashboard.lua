@@ -11,8 +11,10 @@ return {
                 ' Welcome back! Archibate',
                 '',
             },
-            week_header = {
-                enable = false,
+            project = {
+                enable = true,
+                limit = 8,
+                action = 'Telescope fd cwd=',
             },
             shortcut = {
                 {

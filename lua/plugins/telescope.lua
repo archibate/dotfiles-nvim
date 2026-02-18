@@ -26,6 +26,7 @@ return {
         { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
         { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent files" },
         { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
+        { "<leader>fo", "<cmd>Telescope resume<cr>", desc = "Diagnostics" },
     },
     opts = {
         defaults = {

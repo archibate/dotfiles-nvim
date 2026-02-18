@@ -95,7 +95,7 @@ return {
         },
 
         {
-            "<leader><leader>",
+            "<leader>ja",
             function()
                 require("hop").hint_anywhere()
             end,
