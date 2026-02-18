@@ -8,7 +8,7 @@ return {
         change_to_vcs_root = true,
         config = {
             header = {
-                'Welcome back! Archibate',
+                ' Welcome back! Archibate',
                 '',
             },
             week_header = {
@@ -22,24 +22,34 @@ return {
                     key = 'u',
                 },
                 {
-                    icon = ' ',
-                    icon_hl = '@variable',
-                    desc = 'Files',
+                    desc = ' Recent',
+                    group = '@type',
+                    action = 'Telescope oldfiles',
+                    key = 'r',
+                },
+                {
+                    desc = ' Git',
+                    group = 'Number',
+                    action = 'Telescope git_status',
+                    key = 'g',
+                },
+                {
+                    desc = ' Search',
+                    group = 'Character',
+                    action = 'Telescope live_grep',
+                    key = 's',
+                },
+                {
+                    desc = ' Files',
                     group = 'Label',
-                    action = 'Telescope find_files',
+                    action = 'Telescope fd',
                     key = 'f',
                 },
                 {
-                    desc = ' Apps',
-                    group = 'DiagnosticHint',
-                    action = 'Telescope app',
-                    key = 'a',
-                },
-                {
                     desc = ' Lazygit',
-                    group = 'Number',
+                    group = 'NoiceCmdline',
                     action = 'Telescope lazygit',
-                    key = 'g',
+                    key = 'l',
                 },
             },
         },
