@@ -55,30 +55,43 @@ vim.keymap.set({ "n", "v" }, "<leader>w", "<cmd>wa<CR>", { noremap = true, silen
 
 -- Smart close with 'q'
 vim.keymap.set("n", "q", function()
-    local win_count = #vim.api.nvim_list_wins()
+    local win_list = {}
+    for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+        if vim.api.nvim_win_get_height(win) ~= -1 and vim.api.nvim_win_get_width(win) ~= -1 then
+            win_list[#win_list+1] = win
+        end
+    end
+    local win_count = #win_list
     local listed_bufs = #vim.tbl_filter(function(b)
         return vim.bo[b].buflisted and vim.api.nvim_buf_is_loaded(b)
     end, vim.api.nvim_list_bufs())
 
-    local function save_if_modified(bufnr)
-        if vim.bo[bufnr].modified and vim.bo[bufnr].modifiable and vim.bo[bufnr].buftype == "" then
-            vim.cmd("write")
-        end
+    local function is_modifiable(bufnr)
+        return vim.bo[bufnr].modifiable and vim.bo[bufnr].buftype == ""
+    end
+
+    local function is_modified(bufnr)
+        return vim.bo[bufnr].modified and is_modifiable(bufnr)
     end
 
     if win_count > 1 then
-        save_if_modified(0)
         vim.cmd("hide")
     elseif listed_bufs > 1 then
-        save_if_modified(0)
+        if is_modified(0) then
+            vim.cmd("write")
+        end
         local current_buf = vim.api.nvim_get_current_buf()
         vim.cmd("bnext")
         vim.cmd("bdelete #")
     else
-        save_if_modified(0)
+        if is_modified(0) then
+            vim.cmd("write")
+        end
         vim.cmd("quit")
     end
 end, { desc = "Smart close window/buffer/quit with save" })
+
+vim.keymap.set("v", "q", "<Esc>", { noremap = true, desc = "Quit visual mode" })
 
 -- Map gq to original q (macro record)
 vim.keymap.set("n", "gq", "q", { noremap = true, silent = true, desc = "Start macro recording" })
@@ -87,5 +100,7 @@ vim.keymap.set("n", "gq", "q", { noremap = true, silent = true, desc = "Start ma
 vim.keymap.set("n", "[b", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
 vim.keymap.set("n", "]b", "<cmd>bnext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "[B", "<cmd>bfirst<CR>", { desc = "First buffer" })
+vim.keymap.set("n", "gb", "<cmd>buffer #<CR>", { desc = "Alternate buffer" })
+vim.keymap.set("n", "gB", "<cmd>buffer #<CR>", { desc = "Alternate buffer" })
 vim.keymap.set("n", "]B", "<cmd>blast<CR>", { desc = "Last buffer" })
 vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Delete buffer" })

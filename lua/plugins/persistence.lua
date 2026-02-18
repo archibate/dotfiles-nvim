@@ -33,5 +33,12 @@ return {
             end,
             desc = "Stop session saving",
         },
+        {
+            "<leader>qq",
+            function()
+                vim.cmd("wqall")
+            end,
+            desc = "Quit Neovim",
+        },
     },
 }
