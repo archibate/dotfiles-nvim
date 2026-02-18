@@ -46,7 +46,9 @@ return {
             end,
             show_help = true,
             show_keys = true,
-            triggers = { { "<auto>", mode = "nxso" } },
+            triggers = {
+                { "<auto>", mode = "nxso" },
+            },
         },
         keys = {
             {

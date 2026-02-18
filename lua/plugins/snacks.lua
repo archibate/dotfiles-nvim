@@ -5,5 +5,14 @@ return {
         lazy = false,
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {},
+        keys = {
+            {
+                "<leader>bm",
+                function ()
+                    require'snacks'.picker.buffers()
+                end,
+                desc = "Pick buffers",
+            },
+        },
     },
 }

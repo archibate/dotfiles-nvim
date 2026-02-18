@@ -18,7 +18,7 @@ return {
                     current_line_only = true,
                 })
             end,
-            mode = { "n", "x" },
+            mode = { "n", "x", "o" },
             remap = true,
             desc = "Hop: char1 after cursor",
         },
@@ -35,7 +35,7 @@ return {
                     current_line_only = true,
                 })
             end,
-            mode = { "n", "x" },
+            mode = { "n", "x", "o" },
             remap = true,
             desc = "Hop: char1 before cursor",
         },
@@ -53,7 +53,7 @@ return {
                     hint_offset = -1,
                 })
             end,
-            mode = { "n", "x" },
+            mode = { "n", "x", "o" },
             remap = true,
             desc = "Hop: char1 till after cursor",
         },
@@ -71,7 +71,7 @@ return {
                     hint_offset = 1,
                 })
             end,
-            mode = { "n", "x" },
+            mode = { "n", "x", "o" },
             remap = true,
             desc = "Hop: char1 till before cursor",
         },
@@ -81,7 +81,7 @@ return {
             function()
                 require("hop").hint_lines()
             end,
-            mode = { "n", "x" },
+            mode = { "n", "x", "o" },
             desc = "Hop: jump to any line",
         },
 
@@ -90,7 +90,7 @@ return {
             function()
                 require("hop").hint_char2()
             end,
-            mode = { "n", "x" },
+            mode = { "n", "x", "o" },
             desc = "Hop: jump by two char",
         },
 
@@ -99,7 +99,7 @@ return {
             function()
                 require("hop").hint_anywhere()
             end,
-            mode = { "n", "x" },
+            mode = { "n", "x", "o" },
             desc = "Hop: jump anywhere",
         },
         {
@@ -109,7 +109,7 @@ return {
                     current_line_only = true,
                 })
             end,
-            mode = { "n", "x" },
+            mode = { "n", "x", "o" },
             desc = "Hop: anywhere in current line",
         },
     },

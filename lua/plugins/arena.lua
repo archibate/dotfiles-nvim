@@ -31,6 +31,6 @@ return {
         },
     },
     keys = {
-        { "<leader>bb", "<cmd>ArenaToggle<CR>", desc = "Toggle Arena" },
+        { "<leader>ba", "<cmd>ArenaToggle<CR>", desc = "Toggle Arena" },
     },
 }
