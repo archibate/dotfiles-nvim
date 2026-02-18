@@ -144,6 +144,18 @@ return {
                 vim.keymap.set({ "n", "x", "o" }, "[" .. key_upper, function()
                     require("nvim-treesitter-textobjects.move").goto_previous_end(obj_outer, "textobjects")
                 end)
+                vim.keymap.set({ "n", "x", "o" }, "g]" .. key, function()
+                    require("nvim-treesitter-textobjects.move").goto_next_start(obj_inner, "textobjects")
+                end)
+                vim.keymap.set({ "n", "x", "o" }, "g[" .. key, function()
+                    require("nvim-treesitter-textobjects.move").goto_previous_start(obj_inner, "textobjects")
+                end)
+                vim.keymap.set({ "n", "x", "o" }, "g]" .. key_upper, function()
+                    require("nvim-treesitter-textobjects.move").goto_next_end(obj_inner, "textobjects")
+                end)
+                vim.keymap.set({ "n", "x", "o" }, "g[" .. key_upper, function()
+                    require("nvim-treesitter-textobjects.move").goto_previous_end(obj_inner, "textobjects")
+                end)
             end
         end,
     },

@@ -14,7 +14,9 @@ return {
         },
         keys = {
             { "<leader>gg", "<cmd>LazyGit<cr>", desc = "Open LazyGit" },
-            { "<leader>gc", "<cmd>LazyGitCurrentFile<cr>", desc = "Open LazyGit for current file" },
+            { "<leader>gf", "<cmd>LazyGitCurrentFile<cr>", desc = "Open LazyGit for current file" },
+            { "<leader>gl", "<cmd>LazyGitFilter<cr>", desc = "Open LazyGit commits" },
+            { "<leader>gb", "<cmd>LazyGitFilterCurrentFile<cr>", desc = "Open LazyGit commits for current file" },
         },
         config = function()
             local ok, _ = pcall(require, "telescope")

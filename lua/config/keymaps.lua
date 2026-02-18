@@ -53,6 +53,24 @@ vim.keymap.set("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Open diag
 -- Save all files
 vim.keymap.set({ "n", "v" }, "<leader>w", "<cmd>wa<CR>", { noremap = true, silent = true, desc = "Save all files" })
 
+-- function vim.list_wins()
+--     local function is_floating(winnr)
+--         local config = vim.api.nvim_win_get_config(winnr)
+--         -- Floating windows have a 'relative' attribute that is not empty
+--         -- or a 'zindex' attribute.
+--         return config.relative ~= "" or config.zindex ~= nil
+--     end
+--
+--     local win_list = {}
+--     for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+--         if vim.api.nvim_win_get_height(win) ~= -1 and vim.api.nvim_win_get_width(win) ~= -1 and not is_floating(win) then
+--             win_list[#win_list+1] = win
+--         end
+--     end
+--
+--     return win_list
+-- end
+
 -- Smart close with 'q'
 vim.keymap.set("n", "q", function()
     local function is_floating(winnr)
@@ -81,7 +99,7 @@ vim.keymap.set("n", "q", function()
         return vim.bo[bufnr].modified and is_modifiable(bufnr)
     end
 
-    if win_count > 1 then
+    if win_count > 1 or is_floating(0) then
         vim.cmd("hide")
     elseif listed_bufs > 1 then
         if is_modified(0) then

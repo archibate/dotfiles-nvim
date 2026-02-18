@@ -6,22 +6,22 @@ return {
         keys = "etovxqpdygfblzhckisuran",
     },
     keys = {
-        {
-            "f",
-            function()
-                if vim.v.count and vim.v.count > 0 then
-                    vim.api.nvim_feedkeys(vim.v.count .. "f", "n", false)
-                    return
-                end
-                require("hop").hint_char1({
-                    direction = require("hop.hint").HintDirection.AFTER_CURSOR,
-                    current_line_only = true,
-                })
-            end,
-            mode = { "n", "x", "o" },
-            remap = true,
-            desc = "Hop: char1 after cursor",
-        },
+        -- {
+        --     "f",
+        --     function()
+        --         if vim.v.count and vim.v.count > 0 then
+        --             vim.api.nvim_feedkeys(vim.v.count .. "f", "n", false)
+        --             return
+        --         end
+        --         require("hop").hint_char1({
+        --             direction = require("hop.hint").HintDirection.AFTER_CURSOR,
+        --             current_line_only = true,
+        --         })
+        --     end,
+        --     mode = { "n", "x", "o" },
+        --     remap = true,
+        --     desc = "Hop: char1 after cursor",
+        -- },
 
         {
             "F",
@@ -31,8 +31,8 @@ return {
                     return
                 end
                 require("hop").hint_char1({
-                    direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
-                    current_line_only = true,
+                    -- direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
+                    -- current_line_only = true,
                 })
             end,
             mode = { "n", "x", "o" },
@@ -40,23 +40,23 @@ return {
             desc = "Hop: char1 before cursor",
         },
 
-        {
-            "t",
-            function()
-                if vim.v.count and vim.v.count > 0 then
-                    vim.api.nvim_feedkeys(vim.v.count .. "t", "n", false)
-                    return
-                end
-                require("hop").hint_char1({
-                    direction = require("hop.hint").HintDirection.AFTER_CURSOR,
-                    current_line_only = true,
-                    hint_offset = -1,
-                })
-            end,
-            mode = { "n", "x", "o" },
-            remap = true,
-            desc = "Hop: char1 till after cursor",
-        },
+        -- {
+        --     "t",
+        --     function()
+        --         if vim.v.count and vim.v.count > 0 then
+        --             vim.api.nvim_feedkeys(vim.v.count .. "t", "n", false)
+        --             return
+        --         end
+        --         require("hop").hint_char1({
+        --             direction = require("hop.hint").HintDirection.AFTER_CURSOR,
+        --             current_line_only = true,
+        --             hint_offset = -1,
+        --         })
+        --     end,
+        --     mode = { "n", "x", "o" },
+        --     remap = true,
+        --     desc = "Hop: char1 till after cursor",
+        -- },
 
         {
             "T",
@@ -66,8 +66,8 @@ return {
                     return
                 end
                 require("hop").hint_char1({
-                    direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
-                    current_line_only = true,
+                    -- direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
+                    -- current_line_only = true,
                     hint_offset = 1,
                 })
             end,
