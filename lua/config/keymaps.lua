@@ -55,9 +55,16 @@ vim.keymap.set({ "n", "v" }, "<leader>w", "<cmd>wa<CR>", { noremap = true, silen
 
 -- Smart close with 'q'
 vim.keymap.set("n", "q", function()
+    local function is_floating(winnr)
+        local config = vim.api.nvim_win_get_config(winnr)
+        -- Floating windows have a 'relative' attribute that is not empty
+        -- or a 'zindex' attribute.
+        return config.relative ~= "" or config.zindex ~= nil
+    end
+
     local win_list = {}
     for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-        if vim.api.nvim_win_get_height(win) ~= -1 and vim.api.nvim_win_get_width(win) ~= -1 then
+        if vim.api.nvim_win_get_height(win) ~= -1 and vim.api.nvim_win_get_width(win) ~= -1 and not is_floating(win) then
             win_list[#win_list+1] = win
         end
     end

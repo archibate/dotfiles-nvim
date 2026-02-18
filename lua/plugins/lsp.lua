@@ -169,6 +169,13 @@ return {
     -- Cmp LSP capabilities
     {
         "hrsh7th/cmp-nvim-lsp",
-        lazy = false,
+        event = 'VeryLazy',
+    },
+
+    {
+        'smjonas/inc-rename.nvim',
+        event = 'VeryLazy',
+        cmd = 'IncRename',
+        opts = {},
     },
 }
