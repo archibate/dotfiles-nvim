@@ -105,7 +105,6 @@ vim.keymap.set("n", "q", function()
         if is_modified(0) then
             vim.cmd("write")
         end
-        local current_buf = vim.api.nvim_get_current_buf()
         vim.cmd("bnext")
         vim.cmd("bdelete #")
     else
@@ -129,3 +128,5 @@ vim.keymap.set("n", "gb", "<cmd>buffer #<CR>", { desc = "Alternate buffer" })
 vim.keymap.set("n", "gB", "<cmd>buffer #<CR>", { desc = "Alternate buffer" })
 vim.keymap.set("n", "]B", "<cmd>blast<CR>", { desc = "Last buffer" })
 vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Delete buffer" })
+
+vim.keymap.set("n", "<f1>", "", { desc = "Do nothing" })

@@ -29,8 +29,8 @@ return {
                 name = 'deepseek',
                 optional = {
                     max_tokens = 512,
-                    temperature = 0.5,
-                    top_p = 0.95,
+                    temperature = 0.9,
+                    top_k = 10,
                 },
             },
         },
