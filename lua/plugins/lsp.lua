@@ -121,8 +121,6 @@ return {
             -- Capabilities for nvim-cmp
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-            vim.lsp.set_log_level("off")
-
             -- Enable servers
             for _, server in ipairs(servers) do
                 vim.lsp.config(server, {

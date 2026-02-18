@@ -67,5 +67,17 @@ end
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- 设置全局 LSP 日志级别为警告
-vim.lsp.set_log_level(vim.lsp.protocol.MessageType.Warning)
+-- 设置全局 LSP 日志级别为 off
+vim.lsp.set_log_level("off")
+
+vim.api.nvim_create_augroup("mygroup", { clear = true })
+vim.api.nvim_create_autocmd("Filetype", {
+    pattern = { "*" },
+    callback = function()
+        vim.opt.formatoptions = vim.opt.formatoptions + {
+            o = false, -- Don't continue comments with o and O
+        }
+    end,
+    group = "mygroup",
+    desc = "Don't continue comments with o and O",
+})
