@@ -43,8 +43,12 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { noremap = true, silent = t
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Exit terminal mode" })
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "[d", function() vim.diagnostic.jump({count = -1}) end, { desc = "Go to previous diagnostic message" })
-vim.keymap.set("n", "]d", function() vim.diagnostic.jump({count = 1}) end, { desc = "Go to next diagnostic message" })
+vim.keymap.set("n", "[d", function()
+    vim.diagnostic.jump({ count = -vim.v.count1 })
+end, { desc = "Go to previous diagnostic message" })
+vim.keymap.set("n", "]d", function()
+    vim.diagnostic.jump({ count = vim.v.count1 })
+end, { desc = "Go to next diagnostic message" })
 vim.keymap.set("n", "<leader>de", vim.diagnostic.open_float, { desc = "Show diagnostic error messages" })
 vim.keymap.set("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Open diagnostic quickfix list" })
 
@@ -82,8 +86,12 @@ vim.keymap.set("n", "q", function()
 
     local win_list = {}
     for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-        if vim.api.nvim_win_get_height(win) ~= -1 and vim.api.nvim_win_get_width(win) ~= -1 and not is_floating(win) then
-            win_list[#win_list+1] = win
+        if
+            vim.api.nvim_win_get_height(win) ~= -1
+            and vim.api.nvim_win_get_width(win) ~= -1
+            and not is_floating(win)
+        then
+            win_list[#win_list + 1] = win
         end
     end
     local win_count = #win_list
@@ -121,12 +129,32 @@ vim.keymap.set("v", "q", "<Esc>", { noremap = true, desc = "Quit visual mode" })
 vim.keymap.set("n", "gq", "q", { noremap = true, silent = true, desc = "Start macro recording" })
 
 -- Buffer navigation
-vim.keymap.set("n", "[b", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
-vim.keymap.set("n", "]b", "<cmd>bnext<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "[B", "<cmd>bfirst<CR>", { desc = "First buffer" })
+vim.keymap.set("n", "[b", function()
+    for _ = 1, vim.v.count1 do
+        vim.cmd.bprevious()
+    end
+end, { desc = "Previous buffer" })
+vim.keymap.set("n", "]b", function()
+    for _ = 1, vim.v.count1 do
+        vim.cmd.bnext()
+    end
+end, { desc = "Next buffer" })
+vim.keymap.set("n", "[B", function()
+    local bufs = vim.tbl_filter(function(b)
+        return vim.bo[b].buflisted
+    end, vim.api.nvim_list_bufs())
+    local idx = math.min(vim.v.count1, #bufs)
+    vim.cmd.buffer(bufs[idx])
+end, { desc = "First buffer" })
 vim.keymap.set("n", "gb", "<cmd>buffer #<CR>", { desc = "Alternate buffer" })
 vim.keymap.set("n", "gB", "<cmd>buffer #<CR>", { desc = "Alternate buffer" })
-vim.keymap.set("n", "]B", "<cmd>blast<CR>", { desc = "Last buffer" })
+vim.keymap.set("n", "]B", function()
+    local bufs = vim.tbl_filter(function(b)
+        return vim.bo[b].buflisted
+    end, vim.api.nvim_list_bufs())
+    local idx = math.max(#bufs - vim.v.count1 + 1, 1)
+    vim.cmd.buffer(bufs[idx])
+end, { desc = "Last buffer" })
 vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Delete buffer" })
 
 vim.keymap.set("n", "<f1>", "", { desc = "Do nothing" })
