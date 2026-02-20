@@ -23,7 +23,7 @@ return {
             },
         },
         n_completions = 3,
-        context_window = 4096,
+        context_window = 2048,
         provider = 'openai_fim_compatible',
         provider_options = {
             openai_fim_compatible = {

@@ -50,6 +50,7 @@ nvim
 ```bash
 sudo pacman -S ollama-cuda  # use ollama or ollama-vulkan for non-nvidia cards
 ollama pull qwen2.5-coder:14b
+sudo systemctl enable ollama.service --now
 ```
 
 #### Setting context size
