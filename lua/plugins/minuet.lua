@@ -32,10 +32,11 @@ return {
                 end_point = 'http://localhost:11434/v1/completions',
                 model = 'qwen2.5-coder:14b',
                 optional = {
-                    max_tokens = 128,
+                    max_tokens = 64,
                     temperature = 0.4,
                     top_p = 0.96,
                 },
+                -- for online users:
                 -- api_key = 'DEEPSEEK_API_KEY',
                 -- name = 'deepseek',
                 -- optional = {
