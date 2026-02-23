@@ -22,11 +22,13 @@ return {
         lazy = false,
         dependencies = { "williamboman/mason.nvim" },
         config = function()
-            require("mason-tool-installer").setup({
-                ensure_installed = {
-                    "tree-sitter-cli",
-                },
-            })
+            if vim.fn.executable('tree-sitter') ~= 1 then
+                require("mason-tool-installer").setup({
+                    ensure_installed = {
+                        "tree-sitter-cli",
+                    },
+                })
+            end
         end,
     },
 

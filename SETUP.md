@@ -19,7 +19,16 @@ sudo pacman -S uv python-uv
 sudo pacman -S ruff stylua
 sudo pacman -S nodejs npm
 sudo pacman -S neovim python-pynvim
+sudo pacman -S cargo
 ```
+
+### Installing Rust Dependencies
+
+```bash
+cargo install tree-sitter-cli
+```
+
+> If error occurred: run `rustup default 1.88` first.
 
 ### Cloning This Configuration Pack
 
