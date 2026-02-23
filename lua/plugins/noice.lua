@@ -41,6 +41,21 @@ return {
             --     -- },
             --     -- anchor = "C",
             -- },
+            mini = {
+                win_options = {
+                    wrap = true,
+                },
+            },
+            popup = {
+                win_options = {
+                    wrap = true,
+                },
+            },
+            hover = {
+                win_options = {
+                    wrap = true,
+                },
+            },
         },
     },
     dependencies = {
