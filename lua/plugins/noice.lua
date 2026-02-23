@@ -67,7 +67,10 @@ return {
         {
             "rcarriga/nvim-notify",
             opts = {
-                position = 'bottom-right',
+                on_open = function(win)
+                    vim.wo[win].wrap = true
+                end,
+                position = "bottom-right",
                 top_down = false,
                 timeout = 2000,
                 max_width = 60,
