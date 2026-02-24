@@ -15,6 +15,7 @@ return {
             config = function()
                 require("telescope").load_extension("fzf")
             end,
+            -- optional = true,
         },
     },
     keys = {
