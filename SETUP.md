@@ -19,6 +19,7 @@ sudo pacman -S uv python-uv
 sudo pacman -S ruff stylua
 sudo pacman -S nodejs npm
 sudo pacman -S neovim python-pynvim
+sudo pacman -S base-devel
 sudo pacman -S cargo
 ```
 
