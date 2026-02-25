@@ -71,7 +71,7 @@ vim.g.maplocalleader = " "
 vim.lsp.log.set_level("off")
 
 vim.api.nvim_create_augroup("mygroup", { clear = true })
-vim.api.nvim_create_autocmd("Filetype", {
+vim.api.nvim_create_autocmd("FileType", {
     pattern = { "*" },
     callback = function()
         vim.opt.formatoptions = vim.opt.formatoptions + {
@@ -81,3 +81,15 @@ vim.api.nvim_create_autocmd("Filetype", {
     group = "mygroup",
     desc = "Don't continue comments with o and O",
 })
+
+vim.g.clipboard = {
+  name = "OSC 52",
+  copy = {
+    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+  },
+  paste = {
+    ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+    ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+  },
+}
