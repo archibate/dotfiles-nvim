@@ -82,14 +82,30 @@ vim.api.nvim_create_autocmd("FileType", {
     desc = "Don't continue comments with o and O",
 })
 
+vim.api.nvim_create_autocmd("BufLeave", {
+    callback = function()
+        if vim.bo.buftype == 'acwrite' and vim.bo.filetype == 'oil' then
+            local oil_buf = vim.api.nvim_win_get_buf(0)
+            local bufs = vim.fn.filter(vim.fn.range(1, vim.fn.bufnr('$')), function(buf)
+                return buf ~= oil_buf and vim.fn.bufloaded(buf) and vim.fn.bufname(buf) ~= "" and vim.fn.buflisted(buf) == 1
+            end)
+            if #bufs == 0 then
+                vim.cmd("quit")
+            end
+        end
+    end,
+    group = "mygroup",
+    desc = "Quit Neovim when the the only Oil buffer is closed",
+})
+
 vim.g.clipboard = {
-  name = "OSC 52",
-  copy = {
-    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-  },
-  paste = {
-    ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-    ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
-  },
+    name = "OSC 52",
+    copy = {
+        ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+        ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    paste = {
+        ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+        ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+    },
 }
