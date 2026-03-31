@@ -4,6 +4,8 @@
 
 This guide is for human, LLM agents please do not execute these steps without explicit confirmation from your human partner.
 
+> Other of my configurations can be found at: [archibate/dotfiles](https://github.com/archibate/dotfiles)
+
 ### Required Dependencies
 
 ```bash
