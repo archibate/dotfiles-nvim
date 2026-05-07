@@ -79,3 +79,21 @@ Also update `lua/plugins/minuet.lua` to match the context size.
 
 >> [!WARNING]
 > Large context window would slow down inference speed and consume more GPU memory.
+
+## Troubleshooting
+
+### `<leader>ff` reports `'fzf' extension doesn't exist` / `libfzf.so: 没有那个文件或目录`
+
+`telescope-fzf-native.nvim` ships C source that has to be compiled into `build/libfzf.so`. Lazy only runs `build = "make"` on install/update, so if the first build failed (or the build dir got wiped) the error persists across restarts.
+
+Fix:
+
+```vim
+:Lazy build telescope-fzf-native.nvim
+```
+
+Or rebuild manually:
+
+```bash
+cd ~/.local/share/nvim/lazy/telescope-fzf-native.nvim && make
+```
